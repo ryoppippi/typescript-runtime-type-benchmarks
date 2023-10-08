@@ -20,6 +20,7 @@
 * [io-ts](https://github.com/gcanti/io-ts)
 * [jointz](https://github.com/moodysalem/jointz)
 * [json-decoder](https://github.com/venil7/json-decoder)
+* [lizod](https://github.com/mizchi/lizod)
 * [@mojotech/json-type-validaton](https://github.com/mojotech/json-type-validation)
 * [$mol_data](https://github.com/hyoo-ru/mam_mol/blob/master/data/README.md)
 * [myzod](https://github.com/davidmdm/myzod)
