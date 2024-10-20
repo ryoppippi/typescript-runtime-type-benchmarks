@@ -222,11 +222,11 @@ async function graph({
   // build a list of module names for sorting
   let sortedValues: BenchmarkResult[] = [];
 
-  if (sort === 'fastest') {
+  if (sort === 'fastest' || !sort) {
     sortedValues = [...valuesNodejs, ...valuesBun].sort(
       (a, b) => b.ops - a.ops
     );
-  } else if (sort === 'alphabetically' || !sort) {
+  } else if (sort === 'alphabetically') {
     sortedValues = [...valuesNodejs, ...valuesBun].sort((a, b) =>
       a.name < b.name ? -1 : 1
     );
@@ -437,7 +437,7 @@ class App extends Component<
     selectedBunVersions: {},
     valuesNodeJs: [],
     valuesBun: [],
-    sortBy: 'alphabetically' as const,
+    sortBy: 'fastest' as const,
   };
 
   getNodeJsVersions() {
@@ -529,9 +529,30 @@ class App extends Component<
           }}
         >
           <h1>Runtype Benchmarks</h1>
-          <a href="https://github.com/moltar/typescript-runtime-type-benchmarks/">
-            Github Repository
-          </a>
+          <div>
+            <a
+              class="github-button"
+              href="https://github.com/moltar/typescript-runtime-type-benchmarks"
+              data-color-scheme="no-preference: dark; light: dark_dimmed; dark: dark;"
+              data-icon="octicon-star"
+              data-size="large"
+              data-show-count="true"
+              aria-label="Star moltar/typescript-runtime-type-benchmarks on GitHub"
+            >
+              Star
+            </a>
+            <a
+              class="github-button"
+              href="https://github.com/moltar/typescript-runtime-type-benchmarks/fork"
+              data-color-scheme="no-preference: dark; light: dark_dimmed; dark: dark;"
+              data-icon="octicon-repo-forked"
+              data-size="large"
+              data-show-count="true"
+              aria-label="Fork moltar/typescript-runtime-type-benchmarks on GitHub"
+            >
+              Fork
+            </a>
+          </div>
         </div>
         <p>
           Benchmark Comparison of Packages with Runtime Validation and
@@ -624,8 +645,8 @@ class App extends Component<
                 }
                 value={this.state.sortBy}
               >
-                <option value="alphabetically">Alphabetically</option>
                 <option value="fastest">Fastest</option>
+                <option value="alphabetically">Alphabetically</option>
               </select>
             </label>
           </div>
